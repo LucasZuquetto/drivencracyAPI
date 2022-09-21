@@ -1,7 +1,6 @@
 import Joi from "joi";
 import dayjs from "dayjs";
 
-
 export default function pollMiddleware(req, res, next) {
    const pollObject = req.body;
    const after30days = dayjs().add(30, "day").format("YYYY-MM-DD HH:mm");
@@ -19,6 +18,5 @@ export default function pollMiddleware(req, res, next) {
    if (pollObject.expireAt.length === 0) {
       pollObject.expireAt = after30days;
    }
-
    next();
 }

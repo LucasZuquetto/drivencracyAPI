@@ -11,13 +11,16 @@ export async function postChoiceController(req, res) {
    }
 }
 
-export async function getChoicesController (req, res){
-   const pollId = req.params.id
+export async function getChoicesController(req, res) {
+   const pollId = req.params.id;
    try {
-      const pollChoices = await db.collection('choices').find({pollId}).toArray()
-      res.send(pollChoices)
+      const pollChoices = await db
+         .collection("choices")
+         .find({ pollId })
+         .toArray();
+      res.send(pollChoices);
    } catch (error) {
-      console.error(error.message)
-      res.sendStatus(500)
+      console.error(error.message);
+      res.sendStatus(500);
    }
 }

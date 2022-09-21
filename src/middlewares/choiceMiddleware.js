@@ -40,26 +40,25 @@ export async function postChoiceMiddleware(req, res, next) {
       console.error(error.message);
       res.sendStatus(500);
    }
-
    next();
 }
 
-export async function getChoicesMiddleware(req,res,next){
-   if(req.params.id.length !== 24){
-      res.sendStatus(404)
-      return
+export async function getChoicesMiddleware(req, res, next) {
+   if (req.params.id.length !== 24) {
+      res.sendStatus(404);
+      return;
    }
-   const poll_id = new ObjectId(req.params.id)
+   const poll_id = new ObjectId(req.params.id);
 
    try {
-      const pollExists = await db.collection('polls').findOne({_id:poll_id})
-      if(!pollExists){
+      const pollExists = await db.collection("polls").findOne({ _id: poll_id });
+      if (!pollExists) {
          res.sendStatus(404);
          return;
       }
    } catch (error) {
-      console.log(error.message)
-      res.sendStatus(500)
+      console.log(error.message);
+      res.sendStatus(500);
    }
-   next()
+   next();
 }
