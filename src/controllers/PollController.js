@@ -13,11 +13,11 @@ export async function postPollController(req, res) {
 }
 
 export async function getPollController(req, res) {
-    try {
-       const polls = await db.collection("polls").find().toArray();
-       res.send(polls);
-    } catch (error) {
-       console.error(error.message);
-       res.sendStatus(500);
-    }
- }
+   try {
+      const polls = await db.collection("polls").find().toArray();
+      res.send(polls);
+   } catch (error) {
+      console.error(error.message);
+      res.sendStatus(500);
+   }
+}

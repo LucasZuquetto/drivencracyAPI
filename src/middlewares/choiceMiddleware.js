@@ -3,7 +3,7 @@ import db from "../db.js";
 import { ObjectId } from "mongodb";
 import dayjs from "dayjs";
 
-export default async function choiceMiddleware(req, res, next) {
+export async function postChoiceMiddleware(req, res, next) {
    const choiceObject = req.body;
 
    const choiceSchema = Joi.object({
@@ -42,4 +42,24 @@ export default async function choiceMiddleware(req, res, next) {
    }
 
    next();
+}
+
+export async function getChoicesMiddleware(req,res,next){
+   if(req.params.id.length !== 24){
+      res.sendStatus(404)
+      return
+   }
+   const poll_id = new ObjectId(req.params.id)
+
+   try {
+      const pollExists = await db.collection('polls').findOne({_id:poll_id})
+      if(!pollExists){
+         res.sendStatus(404);
+         return;
+      }
+   } catch (error) {
+      console.log(error.message)
+      res.sendStatus(500)
+   }
+   next()
 }
