@@ -1,4 +1,4 @@
-import db from "../src/db.js";
+import db from "../db.js";
 
 export async function postPollController(req, res) {
    const pollObject = req.body;
@@ -11,3 +11,13 @@ export async function postPollController(req, res) {
       res.sendStatus(500);
    }
 }
+
+export async function getPollController(req, res) {
+    try {
+       const polls = await db.collection("polls").find().toArray();
+       res.send(polls);
+    } catch (error) {
+       console.error(error.message);
+       res.sendStatus(500);
+    }
+ }

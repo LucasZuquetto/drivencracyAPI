@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { getPollController } from '../controllers/getPollController.js';
-import { postPollController } from '../controllers/postPollController.js';
+import { postPollController,getPollController } from '../controllers/PollController.js';
 import pollMiddleware from '../middlewares/pollMiddleware.js';
 
 const pollRouter = Router()

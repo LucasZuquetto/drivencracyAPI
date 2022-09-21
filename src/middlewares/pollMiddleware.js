@@ -12,7 +12,7 @@ export default function pollMiddleware(req, res, next) {
    const validate = pollSchema.validate(pollObject, { abortEarly: false });
 
    if (validate.error) {
-      console.error(validate.error.details.map((error) => error));
+      console.error(validate.error.details.map((detail) => detail.message));
       res.sendStatus(422);
       return;
    }
