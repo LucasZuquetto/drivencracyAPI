@@ -35,6 +35,7 @@ export async function postChoiceMiddleware(req, res, next) {
       }
       if (!dayjs().isBefore(dayjs(pollExists.expireAt))) {
          res.sendStatus(403);
+         return
       }
    } catch (error) {
       console.error(error.message);

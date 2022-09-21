@@ -11,10 +11,6 @@ import {
 const choiceRouter = Router();
 
 choiceRouter.post("/choice", postChoiceMiddleware, postChoiceController);
-choiceRouter.get(
-   "/poll/:id/choice",
-   getChoicesMiddleware,
-   getChoicesController
-);
+choiceRouter.get("/poll/:id/choice",getChoicesMiddleware,getChoicesController);
 
 export default choiceRouter;
