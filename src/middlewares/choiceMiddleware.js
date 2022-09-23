@@ -33,7 +33,7 @@ export async function postChoiceMiddleware(req, res, next) {
          res.sendStatus(409);
          return;
       }
-      if (!dayjs().isBefore(dayjs(pollExists.expireAt))) {
+      if (!dayjs().add(3,'hour').isBefore(dayjs(pollExists.expireAt))) {
          res.sendStatus(403);
          return;
       }
