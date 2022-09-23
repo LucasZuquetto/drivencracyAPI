@@ -1,9 +1,13 @@
-import { Router } from 'express';
-import choiceVoteController from '../controllers/choiceVoteController.js';
-import choiceVoteMiddleware from '../middlewares/choiceVoteMiddleware.js';
+import { Router } from "express";
+import choiceVoteController from "../controllers/choiceVoteController.js";
+import choiceVoteMiddleware from "../middlewares/choiceVoteMiddleware.js";
 
-const choiceVoteRouter = Router() 
+const choiceVoteRouter = Router();
 
-choiceVoteRouter.post('/choice/:id/vote',choiceVoteMiddleware, choiceVoteController)
+choiceVoteRouter.post(
+   "/choice/:id/vote",
+   choiceVoteMiddleware,
+   choiceVoteController
+);
 
-export default choiceVoteRouter
+export default choiceVoteRouter;

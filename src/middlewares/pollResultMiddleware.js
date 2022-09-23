@@ -1,5 +1,5 @@
-import { ObjectId } from 'mongodb';
-import db from '../db.js';
+import { ObjectId } from "mongodb";
+import db from "../db.js";
 
 export default async function pollResultMiddleware(req, res, next) {
    const { id } = req.params;

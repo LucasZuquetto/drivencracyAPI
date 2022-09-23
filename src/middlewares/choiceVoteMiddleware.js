@@ -17,7 +17,7 @@ export default async function choiceVoteMiddleware(req, res, next) {
          res.sendStatus(404);
          return;
       }
-      const poll_id = new ObjectId(choiceExists.pollId)
+      const poll_id = new ObjectId(choiceExists.pollId);
       const poll = await db.collection("polls").findOne({ _id: poll_id });
       if (!dayjs().isBefore(dayjs(poll.expireAt))) {
          res.sendStatus(403);
